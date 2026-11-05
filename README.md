@@ -48,3 +48,7 @@ The sklearn digits data ships with scikit-learn. `reports/RESULTS.md`, `reports/
 - `src/fastml_runtime/experiment.py`: seeded training, evaluation, timing and artifact generation.
 - `tests/`: runtime numerical equivalence, quantization sanity, batching, and validation errors.
 - `reports/`: reference metrics, confusion matrix, throughput plot and reproducibility summary.
+
+## Live demo
+
+Try the [interactive GitHub Pages demo](https://krrish-ghub.github.io/fastml-runtime-lab/).
