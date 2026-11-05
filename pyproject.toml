@@ -1,0 +1,19 @@
+[project]
+name = "fastml-runtime-lab"
+version = "1.0.0"
+description = "A tiny NumPy inference runtime with int8 post-training quantization and reproducible serving benchmarks"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "scikit-learn>=1.4,<2", "matplotlib>=3.8,<4"]
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+[project.scripts]
+fastml-lab = "fastml_runtime.experiment:main"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/fastml_runtime"]

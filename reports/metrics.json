@@ -1,0 +1,254 @@
+{
+  "dataset": "scikit-learn digits (8x8 handwritten digit images)",
+  "n_samples": 1797,
+  "n_features": 64,
+  "classes": 10,
+  "split": {
+    "train": 1347,
+    "test": 450,
+    "stratified": true,
+    "seed": 42,
+    "scaler_fit_on": "train only"
+  },
+  "training": {
+    "estimator": "sklearn.neural_network.MLPClassifier",
+    "hidden_layers": [
+      128,
+      64
+    ],
+    "activation": "ReLU",
+    "optimizer": "Adam",
+    "iterations": 29,
+    "converged_before_max_iter": true
+  },
+  "quality": {
+    "sklearn_accuracy": 0.96,
+    "float32_accuracy": 0.96,
+    "int8_accuracy": 0.96,
+    "sklearn_log_loss": 0.168,
+    "float32_max_probability_abs_diff": 0.0,
+    "int8_probability_mae_vs_float32": 0.00031,
+    "int8_prediction_agreement_with_float32": 1.0
+  },
+  "benchmark_environment": {
+    "python": "3.14.7",
+    "numpy": "2.5.4",
+    "platform": "Linux-6.1.158+-x86_64-with-glibc2.36",
+    "cpu_count": 2,
+    "warmups": 2,
+    "repeats": 7,
+    "timing_note": "single-process local CPU; indicative, not a cross-machine claim"
+  },
+  "benchmark": [
+    {
+      "runtime": "sklearn_reference",
+      "batch_size": 450,
+      "samples": 450,
+      "median_ms": 0.364,
+      "p95_ms": 0.437,
+      "repeats": 7,
+      "samples_per_second": 1236263.7
+    },
+    {
+      "runtime": "numpy_float32",
+      "batch_size": 1,
+      "samples": 450,
+      "median_ms": 7.366,
+      "p95_ms": 7.797,
+      "repeats": 7,
+      "samples_per_second": 61091.5
+    },
+    {
+      "runtime": "numpy_float32",
+      "batch_size": 16,
+      "samples": 450,
+      "median_ms": 0.869,
+      "p95_ms": 0.993,
+      "repeats": 7,
+      "samples_per_second": 517836.6
+    },
+    {
+      "runtime": "numpy_float32",
+      "batch_size": 64,
+      "samples": 450,
+      "median_ms": 0.632,
+      "p95_ms": 0.673,
+      "repeats": 7,
+      "samples_per_second": 712025.3
+    },
+    {
+      "runtime": "numpy_float32",
+      "batch_size": 450,
+      "samples": 450,
+      "median_ms": 0.285,
+      "p95_ms": 0.335,
+      "repeats": 7,
+      "samples_per_second": 1578947.4
+    },
+    {
+      "runtime": "numpy_int8",
+      "batch_size": 1,
+      "samples": 450,
+      "median_ms": 28.732,
+      "p95_ms": 28.989,
+      "repeats": 7,
+      "samples_per_second": 15662.0
+    },
+    {
+      "runtime": "numpy_int8",
+      "batch_size": 16,
+      "samples": 450,
+      "median_ms": 6.922,
+      "p95_ms": 7.037,
+      "repeats": 7,
+      "samples_per_second": 65010.1
+    },
+    {
+      "runtime": "numpy_int8",
+      "batch_size": 64,
+      "samples": 450,
+      "median_ms": 5.894,
+      "p95_ms": 6.894,
+      "repeats": 7,
+      "samples_per_second": 76348.8
+    },
+    {
+      "runtime": "numpy_int8",
+      "batch_size": 450,
+      "samples": 450,
+      "median_ms": 5.672,
+      "p95_ms": 6.077,
+      "repeats": 7,
+      "samples_per_second": 79337.1
+    }
+  ],
+  "confusion_matrix_int8": [
+    [
+      43,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      45,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      44,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      45,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      43,
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      43,
+      0,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      44,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      45,
+      0,
+      0
+    ],
+    [
+      0,
+      5,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      37,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      43
+    ]
+  ],
+  "limitations": [
+    "Digits is a small, clean educational dataset, not a production workload.",
+    "Benchmark timing depends on hardware, BLAS build, load and batch size; compare only within the same environment.",
+    "This is a minimal dense-network runtime, not a general ONNX or production serving engine.",
+    "Per-batch activation scaling makes int8 output dependent on batch composition; this experiment measures one fixed held-out batch.",
+    "Quantized mode is an educational CPU implementation; it may be slower than optimized floating-point libraries."
+  ]
+}
