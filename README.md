@@ -6,7 +6,7 @@ This is not another dataset-prediction demo. It trains a modest MLP, exports its
 
 ## Why publish it?
 
-ML deployment is more than training a model. This project makes the boundary between a framework model and an inference runtime concrete: tensor shapes, ReLU/softmax math, numerical equivalence, quantization error, micro-batching, and reproducible measurement. The goal is a small educational systems lab—not a claim to beat optimized serving libraries.
+ML deployment is more than training a model. This project makes the boundary between a framework model and an inference runtime concrete: tensor shapes, ReLU/softmax math, numerical equivalence, quantization error, micro-batching, and reproducible measurement. The goal is a small educational systems lab, not a claim to outperform optimized serving libraries.
 
 ## Dataset and experiment
 
